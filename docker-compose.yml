@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  api:
+    build: .
+    environment:
+      MIX_ENV: dev
+    volumes:
+      - .:/app
+    ports:
+      - "4000:4000"
+    command: mix phx.server
+    depends_on:
+      - db
+
+  db: 
+    image: postgres:12.6
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      # Set a path where Postgres should store the data
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

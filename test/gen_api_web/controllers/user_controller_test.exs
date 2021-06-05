@@ -21,5 +21,15 @@ defmodule GenApiWeb.UserControllerTest do
       conn = get(conn, Routes.user_path(conn, :index))
       assert json_response(conn, 200)["data"] == []
     end
+
+    test "lists a maximum of two users", %{conn: conn} do
+      Enum.map(1..5, fn _ -> fixture(:user) end)
+
+      conn = get(conn, Routes.user_path(conn, :index))
+      result = json_response(conn, 200)["data"]
+
+      assert is_list(result)
+      assert length(result) == 2
+    end
   end
 end

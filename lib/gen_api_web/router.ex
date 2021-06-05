@@ -1,6 +1,8 @@
 defmodule GenApiWeb.Router do
   use GenApiWeb, :router
 
+  alias GenApiWeb.UserController
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -8,6 +10,8 @@ defmodule GenApiWeb.Router do
   scope "/api", GenApiWeb do
     pipe_through :api
   end
+
+  get "/", UserController, :index
 
   # Enables LiveDashboard only for development
   #

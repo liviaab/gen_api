@@ -47,6 +47,10 @@ defmodule GenApi.UsersTest do
       assert {:error, %Ecto.Changeset{}} = Users.create_user(@invalid_attrs)
     end
 
+    test "create_user/1 with points out of the 0-100 range returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Users.create_user(%{points: 101})
+    end
+
     test "update_user/2 with valid data updates the user" do
       user = user_fixture()
       assert {:ok, %User{} = user} = Users.update_user(user, @update_attrs)

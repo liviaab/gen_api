@@ -15,5 +15,6 @@ defmodule GenApi.Users.User do
     user
     |> cast(attrs, [:points])
     |> validate_required([:points])
+    |> validate_inclusion(:points, 0..100)
   end
 end

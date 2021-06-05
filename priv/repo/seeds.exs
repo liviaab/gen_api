@@ -9,3 +9,9 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+alias GenApi.Users
+
+Enum.map(1..1_000_000, fn _ ->
+	Users.create_user(%{points: 0})
+end)

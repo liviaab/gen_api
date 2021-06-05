@@ -6,7 +6,7 @@ defmodule GenApiWeb.UserController do
   action_fallback GenApiWeb.FallbackController
 
   def index(conn, _params) do
-    users = Users.list_users(%{limit: 2})
+    users = Users.list_users(%{limit: 2, min_points: 0})
     render(conn, "index.json", users: users)
   end
 end

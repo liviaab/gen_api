@@ -27,9 +27,17 @@ defmodule GenApi.UsersTest do
     test "list_users/1 returns a certain amount of users" do
       Enum.map(1..5, fn _ -> user_fixture() end)
 
-      result = Users.list_users(%{limit: 2})
+      result = Users.list_users(%{limit: 2, min_points: 0})
       assert is_list(result)
       assert length(result) == 2
+    end
+
+    test "list_users/1 considers the filters" do
+      Enum.map(1..5, fn _ -> user_fixture() end)
+
+      result = Users.list_users(%{limit: 2, min_points: 50})
+      assert is_list(result)
+      assert length(result) == 0
     end
 
     test "get_user/1 returns the user with given id" do

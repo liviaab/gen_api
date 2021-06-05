@@ -14,8 +14,11 @@ defmodule GenApi.Users do
   end
 
   @spec list_users(map()) :: [%User{}]
-  def list_users(%{limit: limit}) do
-    query = from User, limit: ^limit
+  def list_users(%{limit: limit, min_points: min_points}) do
+    query = from u in User,
+      limit: ^limit,
+      where: u.points > ^min_points
+
     Repo.all(query)
   end
 

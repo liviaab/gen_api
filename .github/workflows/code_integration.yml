@@ -1,0 +1,44 @@
+# from https://github.com/erlef/setup-elixir
+
+name: code_integration
+on: [push]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./github_extended
+    steps:
+      - uses: actions/checkout@v2
+      - uses: erlef/setup-elixir@v1
+        with:
+          otp-version: '24.0'
+          elixir-version: '1.12.1'
+      - run: mix deps.get
+      - run: mix credo
+      - run: mix format
+
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./github_extended
+    services:
+      db:
+        image: postgres:11
+        ports: ['5432:5432']
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v2
+      - uses: erlef/setup-elixir@v1
+        with:
+          otp-version: '24.0'
+          elixir-version: '1.12.1'
+      - run: mix deps.get
+      - run: mix test

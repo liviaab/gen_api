@@ -7,6 +7,5 @@ defmodule GenApi.Repo.Migrations.CreateUsers do
 
       timestamps()
     end
-
   end
 end

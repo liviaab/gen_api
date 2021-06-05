@@ -11,7 +11,6 @@ defmodule GenApiWeb.UserView do
   end
 
   def render("user.json", %{user: user}) do
-    %{id: user.id,
-      points: user.points}
+    %{id: user.id, points: user.points}
   end
 end

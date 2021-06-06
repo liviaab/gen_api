@@ -19,11 +19,6 @@ defmodule GenApi.UsersTest do
       user
     end
 
-    test "list_users/0 returns all users" do
-      user = user_fixture()
-      assert Users.list_users() == [user]
-    end
-
     test "list_users/1 returns a certain amount of users" do
       Enum.map(1..5, fn _ -> user_fixture() end)
 
@@ -37,7 +32,7 @@ defmodule GenApi.UsersTest do
 
       result = Users.list_users(%{limit: 2, min_points: 50})
       assert is_list(result)
-      assert length(result) == 0
+      assert result == []
     end
 
     test "get_user/1 returns the user with given id" do
@@ -69,6 +64,18 @@ defmodule GenApi.UsersTest do
       user = user_fixture()
       assert {:error, %Ecto.Changeset{}} = Users.update_user(user, @invalid_attrs)
       assert {:ok, user} == Users.get_user(user.id)
+    end
+
+    test "update_all_users_points/0 when there are no users returns 0" do
+      assert [] = Users.update_all_users_points()
+    end
+
+    test "update_all_users_points/ updates all users points" do
+      Enum.map(1..5, fn _ -> user_fixture() end)
+
+      assert users = Users.update_all_users_points()
+      assert is_list(users)
+      assert length(users) == 5
     end
 
     test "change_user/1 returns a user changeset" do

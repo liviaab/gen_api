@@ -13,5 +13,5 @@
 alias GenApi.Users
 
 Enum.map(1..1_000_000, fn _ ->
-	Users.create_user(%{points: 0})
+  Users.create_user(%{points: 0})
 end)

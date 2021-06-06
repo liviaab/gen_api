@@ -6,6 +6,9 @@ defmodule GenApi.Application do
   use Application
 
   def start(_type, _args) do
+    # Start the custom genserver UserServer
+    GenApi.GenServers.UserServer.start_link(%{})
+
     children = [
       # Start the Ecto repository
       GenApi.Repo,

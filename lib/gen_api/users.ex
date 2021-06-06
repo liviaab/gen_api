@@ -8,16 +8,12 @@ defmodule GenApi.Users do
 
   alias GenApi.Users.User
 
-  @spec list_users() :: [%User{}]
-  def list_users() do
-    Repo.all(User)
-  end
-
   @spec list_users(map()) :: [%User{}]
   def list_users(%{limit: limit, min_points: min_points}) do
-    query = from u in User,
-      limit: ^limit,
-      where: u.points > ^min_points
+    query =
+      from u in User,
+        limit: ^limit,
+        where: u.points > ^min_points
 
     Repo.all(query)
   end
@@ -42,6 +38,17 @@ defmodule GenApi.Users do
     user
     |> User.changeset(attrs)
     |> Repo.update()
+  end
+
+  @spec update_all_users_points() :: [%User{}]
+  def update_all_users_points() do
+    User
+    |> Repo.all()
+    |> Enum.map(fn user ->
+      {:ok, user} = update_user(user, %{points: Enum.random(0..100)})
+
+      user
+    end)
   end
 
   @spec change_user(%User{}, map()) :: %Ecto.Changeset{}

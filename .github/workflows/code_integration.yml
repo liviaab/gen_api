@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./github_extended
+        working-directory: .
     steps:
       - uses: actions/checkout@v2
       - uses: erlef/setup-elixir@v1
@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./github_extended
+        working-directory: .
     services:
       db:
         image: postgres:11

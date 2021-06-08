@@ -42,13 +42,8 @@ defmodule GenApi.Users do
 
   @spec update_all_users_points() :: [%User{}]
   def update_all_users_points() do
-    User
-    |> Repo.all()
-    |> Enum.map(fn user ->
-      {:ok, user} = update_user(user, %{points: Enum.random(0..100)})
-
-      user
-    end)
+    update(User, set: [points: fragment("floor(random()*100)"), updated_at: fragment("now()")])
+    |> Repo.update_all([])
   end
 
   @spec change_user(%User{}, map()) :: %Ecto.Changeset{}

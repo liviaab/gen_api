@@ -3,7 +3,7 @@ defmodule GenApi.GenServers.UserServer do
   This is the genserver retrives two users, its points and the last timestamp 
     when there is a call to the main endpoint.
   It also updates the users points every minute.
-  """ 
+  """
   use GenServer
 
   require Logger
@@ -35,7 +35,9 @@ defmodule GenApi.GenServers.UserServer do
     {previous_max_number, previous_timestamp} = state
 
     users = Users.list_users(%{limit: 2, min_points: previous_max_number})
-    new_timestamp = DateTime.utc_now()
+
+    new_timestamp =
+      NaiveDateTime.utc_now() |> NaiveDateTime.truncate(:second) |> NaiveDateTime.to_string()
 
     Logger.info(
       "UserServer called\n" <>

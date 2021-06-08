@@ -6,9 +6,6 @@ defmodule GenApi.Application do
   use Application
 
   def start(_type, _args) do
-    # Start the custom genserver UserServer
-    GenApi.GenServers.UserServer.start_link(%{})
-
     children = [
       # Start the Ecto repository
       GenApi.Repo,
@@ -16,6 +13,8 @@ defmodule GenApi.Application do
       GenApiWeb.Telemetry,
       # Start the PubSub system
       {Phoenix.PubSub, name: GenApi.PubSub},
+      # Start the custom genserver UserServer
+      GenApi.GenServers.UserServer,
       # Start the Endpoint (http/https)
       GenApiWeb.Endpoint
       # Start a worker by calling: GenApi.Worker.start_link(arg)

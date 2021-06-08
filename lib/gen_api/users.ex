@@ -40,7 +40,7 @@ defmodule GenApi.Users do
     |> Repo.update()
   end
 
-  @spec update_all_users_points() :: [%User{}]
+  @spec update_all_users_points() :: {integer(), nil}
   def update_all_users_points() do
     update(User, set: [points: fragment("floor(random()*100)"), updated_at: fragment("now()")])
     |> Repo.update_all([])

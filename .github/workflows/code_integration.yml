@@ -42,3 +42,4 @@ jobs:
           elixir-version: '1.12.1'
       - run: mix deps.get
       - run: mix test
+      - run: mix test --only unreliable

@@ -67,15 +67,13 @@ defmodule GenApi.UsersTest do
     end
 
     test "update_all_users_points/0 when there are no users returns 0" do
-      assert [] = Users.update_all_users_points()
+      assert {0, nil} = Users.update_all_users_points()
     end
 
     test "update_all_users_points/ updates all users points" do
       Enum.map(1..5, fn _ -> user_fixture() end)
 
-      assert users = Users.update_all_users_points()
-      assert is_list(users)
-      assert length(users) == 5
+      assert {5, nil} = Users.update_all_users_points()
     end
 
     test "change_user/1 returns a user changeset" do

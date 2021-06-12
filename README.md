@@ -18,13 +18,13 @@
 
 - For more information about the specifications, send me a message :)
 
-### Requirements
+## Requirements
 - `elixir 1.12` 
 - `erlang 24.0` 
 - `postgres 12.7`
 
 
-### Running
+## Running
 First of all, clone the repository
 ```sh
 $ git clone git@github.com:liviaab/gen_api.git
@@ -33,7 +33,7 @@ $ cd gen_api
 
 You can run the application locally or using docker-compose (v1.29.2). In both ways, the app will start at [http://localhost:3000](http://localhost:3000)
 
-##### Locally
+#### Locally
 Before running the application, you should change the database configuration (username, password and hostname in `./config/dev.exs`) to your local postgres database configurations. Then you can run the following commands in Terminal:
 
 ```sh
@@ -42,7 +42,7 @@ $ mix phx.server	# starts the server
 
 ```
 
-##### With Docker
+#### With Docker
 No changes needed, all the config files are set to docker settings.
 ```sh
 $ docker-compose build
@@ -57,7 +57,7 @@ $ docker-compose down
 
 ```
 
-### Running Tests Locally
+## Running Tests Locally
 Before running the tests locally, you should change the database configuration (username, password and hostname in `./config/test.exs`) to your local postgres database configurations. Than you can:
 
 ```sh

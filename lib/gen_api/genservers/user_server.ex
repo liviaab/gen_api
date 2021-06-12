@@ -20,6 +20,10 @@ defmodule GenApi.GenServers.UserServer do
     GenServer.call(UserServer, :get_users)
   end
 
+  def stop() do
+    GenServer.stop(UserServer, :shutdown)
+  end
+
   # Server (callbacks)
 
   @impl true

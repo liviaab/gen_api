@@ -37,6 +37,7 @@ You can run the application locally or using docker-compose (v1.29.2). In both w
 Before running the application, you should change the database configuration (username, password and hostname in `./config/dev.exs`) to your local postgres database configurations. Then you can run the following commands in Terminal:
 
 ```sh
+$ mix deps.get
 $ mix ecto.setup	# creates the database, runs migration and seeds
 $ mix phx.server	# starts the server
 

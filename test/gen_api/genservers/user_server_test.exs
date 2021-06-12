@@ -11,6 +11,7 @@ defmodule GenApi.GenServers.UserServerTest do
   end
 
   describe "get_users/0" do
+    @tag :unreliable
     test "returns users and nil timestamp in the first call" do
       {users, timestamp} =  UserServer.get_users()
       assert is_list(users)

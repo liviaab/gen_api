@@ -1,7 +1,7 @@
 # GenAPI
 [Repository for learning purposes]
 
-- This is a simple api application, composed by a single root `/` endpoint, a genserver (`UserServer`), and a single `User` module.
+- This is a simple Phoenix api application, composed by a single root `/` endpoint, a genserver (`UserServer`), and a single `User` module.
 - A `User` will have an `id`, `points` (integer field that accepts any number between 0 and 100) and `timestamps`.
 - When the root endpoint receives a request, an action should call the genserver and return the result. Example of the request/response flow: 
 	- [api] <-> [genserver] <-> [database]
@@ -23,6 +23,7 @@
 - `erlang 24.0` 
 - `postgres 12.7`
 
+Note: If you have `asdf` as your manager tool, run `asdf install` and you'll be set.
 
 ## Running
 First of all, clone the repository

@@ -23,4 +23,11 @@ defmodule GenApi.Users do
     update(User, set: [points: fragment("floor(random()*100)"), updated_at: fragment("now()")])
     |> Repo.update_all([])
   end
+
+  @spec create_user(map()) :: {:ok, %User{}} | {:error, %Ecto.Changeset{}}
+  def create_user(attrs \\ %{}) do
+    %User{}
+    |> User.changeset(attrs)
+    |> Repo.insert()
+  end
 end

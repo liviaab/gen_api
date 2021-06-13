@@ -7,7 +7,6 @@ defmodule GenApi.UsersTest do
     alias GenApi.Users.User
 
     @valid_attrs %{points: 42}
-    @update_attrs %{points: 43}
     @invalid_attrs %{points: nil}
 
     def user_fixture(attrs \\ %{}) do
@@ -37,6 +36,19 @@ defmodule GenApi.UsersTest do
 
     test "update_all_users_points/0 when there are no users returns 0" do
       assert {0, nil} = Users.update_all_users_points()
+    end
+
+        test "create_user/1 with valid data creates a user" do
+      assert {:ok, %User{} = user} = Users.create_user(@valid_attrs)
+      assert user.points == 42
+    end
+
+    test "create_user/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Users.create_user(@invalid_attrs)
+    end
+
+    test "create_user/1 with points out of the 0-100 range returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Users.create_user(%{points: 101})
     end
   end
 end

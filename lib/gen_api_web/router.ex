@@ -11,6 +11,7 @@ defmodule GenApiWeb.Router do
     pipe_through :api
   end
 
+  pipe_through :api
   get "/", UserController, :index
 
   # Enables LiveDashboard only for development

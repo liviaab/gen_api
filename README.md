@@ -58,8 +58,8 @@ $ docker-compose down
 
 ```
 
-## Running Tests Locally
-Before running the tests locally, you should change the database configuration (username, password and hostname in `./config/test.exs`) to your local postgres database configurations. Than you can:
+## Testing
+Before running tests locally, you should change the database configuration (username, password and hostname in `./config/test.exs`) to your local postgres database configurations. Than you can:
 
 ```sh
 $ mix test

@@ -60,6 +60,8 @@ $ docker-compose down
 ```
 
 ## Testing
+[![codecov](https://codecov.io/gh/liviaab/gen_api/branch/main/graph/badge.svg?token=8L8HABIH61)](https://codecov.io/gh/liviaab/gen_api)
+
 Before running tests locally, you should change the database configuration (username, password and hostname in `./config/test.exs`) to your local postgres database configurations. Than you can:
 
 ```sh

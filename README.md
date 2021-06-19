@@ -84,6 +84,7 @@ GenApi uses GithubActions. The main workflow (code_integration) has two jobs:
 ### Requests
 ![Image of a request to the root endpoint in Postman](./genapi.jpg)
 
+There is a Postman Collection with the request in the root directory.
 
 
 ## To Do

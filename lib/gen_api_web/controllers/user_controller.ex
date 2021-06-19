@@ -1,12 +1,12 @@
 defmodule GenApiWeb.UserController do
   use GenApiWeb, :controller
 
-  alias GenApi.GenServers.UserServer
-
   action_fallback GenApiWeb.FallbackController
 
   def index(conn, _params) do
-    {users, timestamp} = UserServer.get_users()
+    {users, timestamp} = user_server().get_users()
     render(conn, "index.json", %{users: users, timestamp: timestamp})
   end
+
+  defp user_server(), do: Application.get_env(:gen_api, :user_server)
 end

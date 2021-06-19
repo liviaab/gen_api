@@ -20,3 +20,6 @@ config :gen_api, GenApiWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+# GenServer config
+config :gen_api, user_server: GenApi.GenServers.UserServerMock

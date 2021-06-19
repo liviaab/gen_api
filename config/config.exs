@@ -18,6 +18,9 @@ config :gen_api, GenApiWeb.Endpoint,
   pubsub_server: GenApi.PubSub,
   live_view: [signing_salt: "1GDHDztb"]
 
+# GenServer config
+config :gen_api, user_server: GenApi.GenServers.UserServer
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

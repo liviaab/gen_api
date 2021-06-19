@@ -66,6 +66,7 @@ Before running tests locally, you should change the database configuration (user
 
 ```sh
 $ mix test
+$ mix coveralls # shows test coverage
 ```
 
 ### Format

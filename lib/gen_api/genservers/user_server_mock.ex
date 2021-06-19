@@ -1,4 +1,8 @@
 defmodule GenApi.GenServers.UserServerMock do
+  @moduledoc """
+  Mocks genserver UserServer
+  """
+
   alias GenApi.Users
 
   @table_name :user_server

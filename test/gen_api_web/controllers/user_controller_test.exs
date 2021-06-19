@@ -56,6 +56,5 @@ defmodule GenApiWeb.UserControllerTest do
       assert is_list(response["data"])
       assert is_binary(response["timestamp"])
     end
-
   end
 end

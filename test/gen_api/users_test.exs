@@ -38,7 +38,7 @@ defmodule GenApi.UsersTest do
       assert {0, nil} = Users.update_all_users_points()
     end
 
-        test "create_user/1 with valid data creates a user" do
+    test "create_user/1 with valid data creates a user" do
       assert {:ok, %User{} = user} = Users.create_user(@valid_attrs)
       assert user.points == 42
     end

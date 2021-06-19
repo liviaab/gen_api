@@ -7,9 +7,9 @@ defmodule GenApi.GenServers.UserServerMock do
 
   @table_name :user_server
 
-  def init() do 
-    :ets.new(@table_name , [:named_table, :set])
-    :ets.insert(@table_name , {:timestamp, nil})
+  def init() do
+    :ets.new(@table_name, [:named_table, :set])
+    :ets.insert(@table_name, {:timestamp, nil})
     :ok
   end
 
@@ -18,7 +18,7 @@ defmodule GenApi.GenServers.UserServerMock do
     [{_field_name, timestamp}] = :ets.lookup(@table_name, :timestamp)
 
     now = NaiveDateTime.utc_now() |> NaiveDateTime.truncate(:second) |> NaiveDateTime.to_string()
-    :ets.insert(@table_name , {:timestamp, now})
+    :ets.insert(@table_name, {:timestamp, now})
 
     {users, timestamp}
   end

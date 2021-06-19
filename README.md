@@ -18,6 +18,8 @@
 
 - For more information about the specifications, send me a message :)
 
+Live API: [https://boiling-coast-25704.herokuapp.com/](https://boiling-coast-25704.herokuapp.com/)
+
 ## Requirements
 - `elixir 1.12` 
 - `erlang 24.0` 

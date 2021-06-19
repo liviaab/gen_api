@@ -68,3 +68,25 @@ Before running tests locally, you should change the database configuration (user
 $ mix test
 ```
 
+### Format
+```sh
+$ mix format
+$ mix credo
+```
+
+
+## Details
+
+GenApi uses GithubActions. The main workflow (code_integration) has two jobs:
+- tint (runs mix format and credo)
+- test (run mix test, coveralls and uploads the result to Codecov)
+
+### Requests
+![Image of a request to the root endpoint in Postman](./genapi.jpg)
+
+
+
+## To Do
+List of future improvements
+- [ ] Increase test coverage
+- [ ] Automated deploy to heroku

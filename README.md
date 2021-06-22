@@ -81,7 +81,7 @@ $ mix credo
 ## Details
 
 GenApi uses GithubActions. The main workflow (code_integration) has two jobs:
-- tint (runs mix format and credo)
+- lint (runs mix format and credo)
 - test (run mix test, coveralls and uploads the result to Codecov)
 
 ### Requests
